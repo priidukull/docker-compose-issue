@@ -1,0 +1,17 @@
+version: "2"
+services:
+  elasticsearch:
+    image: "docker.elastic.co/elasticsearch/elasticsearch:5.6.2"
+    environment:
+      network.host: "0.0.0.0"
+      xpack.security.enabled: "false"
+      transport.host: "0.0.0.0"
+      http.host: "0.0.0.0"
+      network.publish_host: "127.0.0.1"
+      transport.tcp.port: "9300"
+      discovery.zen.minimum_master_nodes: "1"
+      discovery.type: "single-node"
+      client.transport.sniff: "false"
+    ports:
+      - "9200:9200"
+      - "9300:9300"
